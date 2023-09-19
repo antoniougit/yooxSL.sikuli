@@ -1,11 +1,14 @@
 import csv
+#from datetime import datetime
+#from datetime import timedelta
 Settings.AutoDetectKeyboardLayout = False
+popup("Make sure the content is saved as \\Downloads\\sl.csv before proceeding!")
 motherCampaign = input("Please enter Mother Campaign Name:")
 motherCampaign = "".join(motherCampaign.split())
-campaignName = input("Please enter Campaign Name:")
+campaignName = input("Please enter Variant Name:")
 campaignName = "".join(campaignName.split())
 campaignLang = campaignName.split("_")[-1]
-if campaignLang == "UK":
+if "UK" in campaignLang:
     campaignLang = "OTEU"
 campaignPhase = select("Please select Campaign Phase:", options = ("Exploration", "Broadcast"))
 scheduleMonth = campaignName.split("_")[0]
@@ -15,7 +18,6 @@ audienceFilter = "".join(audienceFilter.split())
 scheduleTime = input("Please enter Schedule Time:")
 scheduleTime = " ".join(scheduleTime.lower().split()[:2])
 variantContent = []
-
 
 with open("C:\\Users\\gantoniou\\Downloads\\sl.csv", 'rb') as csvfile:
     reader = csv.reader(csvfile, delimiter=",")
@@ -28,9 +30,9 @@ with open("C:\\Users\\gantoniou\\Downloads\\sl.csv", 'rb') as csvfile:
 variantContent.insert(0, variantContent.pop())
 
 variantNum = len(variantContent)
-click("1633075584630.png")
+click("1633679365342.png")
 sleep(0.1)
-popup("Select the folder where the Mother Campaign is and press OK to proceed!")
+popup("Select the folder where the Mother Campaign is, make sure " + audienceFilter + " is running, and press OK to proceed!")
 
 for i in range(variantNum):
     if i == 0:
@@ -42,9 +44,9 @@ for i in range(variantNum):
     type(Key.BACKSPACE)
     paste(motherCampaign)
     sleep(0.2)
-    click(Pattern("1633075778242.png").targetOffset(57,0))
+    click(Pattern("1633679419307.png").targetOffset(45,0))
     sleep(0.2)
-    click(Pattern("1631797152539.png").similar(0.90))
+    click("1633679487424.png")
     wait("1631797190821.png",10)
     click("1631797216089.png")
     type("a", KeyModifier.CTRL)
@@ -72,7 +74,7 @@ for i in range(variantNum):
     popup("Select PERSADO_Prooflist_" + campaignLang)
     sleep(10)
     sleep(0.2)
-    click(Pattern("1631800520321.png").exact())
+    click(Pattern("1631800520321.png").similar(0.90))
     type("a", KeyModifier.CTRL)
     type(Key.BACKSPACE)
     paste("50")
@@ -87,8 +89,7 @@ for i in range(variantNum):
     sleep(1)
     wait("1631815986133.png",10)
     click("1631800827544.png")
-    wait("1631812819201.png",20)
-sleep(5)
+    wait("1637834117350.png",20)
 type("f", KeyModifier.CTRL)
 type(Key.BACKSPACE)
 paste("PERSADO_COMPONENTS")
@@ -108,20 +109,20 @@ click("1631693633403.png")
 type(Key.BACKSPACE)
 paste("PERSADO_CAMPAIGNS_2021_" + scheduleMonth)
 click(Pattern("1631712731221.png").targetOffset(0,6))
-sleep(7)
+sleep(5)
 if variantNum == 3:
-    click(Pattern("1631872326210.png").exact())
+    click(Pattern("1631872326210.png").similar(0.97))
     keyDown(Key.CTRL)
-    click(Pattern("1631872341881.png").exact())
-    click(Pattern("1631872357392.png").exact())
-    click(Pattern("1631872437653.png").exact())
-    click(Pattern("1631872388897.png").exact())
-    while not exists(Pattern("1631872454203.png").exact(),1):
+    click(Pattern("1631872341881.png").similar(0.97))
+    click(Pattern("1631872357392.png").similar(0.97))
+    click(Pattern("1631872437653.png").similar(0.97))
+    click(Pattern("1631872388897.png").similar(0.97))
+    while not exists(Pattern("1631872454203.png").similar(0.97),1):
         keyUp()
         type(Key.PAGE_DOWN)
         sleep(0.1)
         keyDown(Key.CTRL)
-    click(Pattern("1631872454203.png").exact())
+    click(Pattern("1631872454203.png").similar(0.97))
     keyUp()
     type(Key.DELETE)
     click(Pattern("1631545019382.png").similar(0.90))
@@ -131,17 +132,17 @@ if variantNum == 3:
     else:
         split = (10, 45, 45)
 elif variantNum == 4:
-    click(Pattern("1631872341881.png").exact())
+    click(Pattern("1631872341881.png").similar(0.97))
     keyDown(Key.CTRL)
-    click(Pattern("1631872357392.png").exact())
-    click(Pattern("1631872437653.png").exact())
-    click(Pattern("1631872388897.png").exact())
-    while not exists(Pattern("1631872454203.png").exact(),1):
+    click(Pattern("1631872357392.png").similar(0.97))
+    click(Pattern("1631872437653.png").similar(0.97))
+    click(Pattern("1631872388897.png").similar(0.97))
+    while not exists(Pattern("1631872454203.png").similar(0.97),1):
         keyUp()
         type(Key.PAGE_DOWN)
         sleep(0.1)
         keyDown(Key.CTRL)
-    click(Pattern("1631872454203.png").exact())
+    click(Pattern("1631872454203.png").similar(0.97))
     keyUp()
     type(Key.DELETE)
     click(Pattern("1631545019382.png").similar(0.90))
@@ -151,16 +152,16 @@ elif variantNum == 4:
     else:
         split = (10, 30, 30, 30)
 elif variantNum == 5:
-    click(Pattern("1631872357392.png").exact())
+    click(Pattern("1631872357392.png").similar(0.97))
     keyDown(Key.CTRL)
-    click(Pattern("1631872437653.png").exact())
-    click(Pattern("1631872388897.png").exact())
-    while not exists(Pattern("1631872454203.png").exact(),1):
+    click(Pattern("1631872437653.png").similar(0.97))
+    click(Pattern("1631872388897.png").similar(0.97))
+    while not exists(Pattern("1631872454203.png").similar(0.97),1):
         keyUp()
         type(Key.PAGE_DOWN)
         sleep(0.1)
         keyDown(Key.CTRL)
-    click(Pattern("1631872454203.png").exact())
+    click(Pattern("1631872454203.png").similar(0.97))
     keyUp()
     type(Key.DELETE)
     click(Pattern("1631545019382.png").similar(0.90))
@@ -203,4 +204,4 @@ click("1631262265870.png")
 sleep(0.2)
 click(Pattern("1631693033057.png").similar(0.90))
 wait("1631708732619.png")
-popup("Configuration READY! Please change dates, enter variants and save!")
+popup("Configuration READY! Please change dates, select variant per app and save!")
